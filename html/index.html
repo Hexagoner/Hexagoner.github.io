@@ -21,17 +21,13 @@
     <![endif]-->
     <div id="root" class="mobile">
         <header id="header">
-            <div class="container">
-                <div class="inner">
-                    <h1 id="title">TRACKER Web App</h1>
-                    <ul id="nav">
-                        <li><button class="btn btn-small" id="button-back" title="Back" role="button"><span class="icon-arrow-left"></span></button></li>
-                        <li><button class="btn btn-small" id="button-menu" title="Menu" role="button"><span class="icon-menu"></span></button></li>
-                        <li><button class="btn btn-small" id="button-notification" title="Notification" role="button"><span class="icon-bell"></span></button></li>
-                        <li><button class="btn btn-small" id="button-info" title="Info" role="button"><span class="icon-info"></span></button></li>
-                    </ul>
-                </div>
-            </div>
+            <h1 id="title">TRACKER Web App</h1>
+            <ul id="nav">
+                <li><button class="btn btn-small" id="button-back" title="Back" role="button"><span class="icon-arrow-left"></span></button></li>
+                <li><button class="btn btn-small" id="button-menu" title="Menu" role="button"><span class="icon-menu"></span></button></li>
+                <li><button class="btn btn-small" id="button-notification" title="Notification" role="button"><span class="icon-bell"></span></button></li>
+                <li><button class="btn btn-small" id="button-info" title="Info" role="button"><span class="icon-info"></span></button></li>
+            </ul>
         </header>
         <main id="content">
             <div class="container">
@@ -39,20 +35,32 @@
 
                     <!-- Hexagon -->
                     <ol id="hexagon">
-                        <li><a href="javascript:{}">App Logo</a></li>
-                        <li><a href="javascript:{}"><div class="icon"><span class="icon-car-protect"></span></div><span>Protect My Car</span></a></li>
+                        <li><a href="javascript:{}"></a></li>
+                        <li><a href="javascript:{}"><div class="icon"><span class="icon-car-unprotect2"></span></div><span>Protect My Car</span></a></li>
                         <li><a href="javascript:{}"><div class="icon"><span class="icon-car-find"></span></div><span>Find My Car</span></a></li>
                         <li><a href="javascript:{}"><div class="icon"><span class="icon-basket"></span></div><span>Offers</span></a></li>
-                        <li><a href="javascript:{}"><div class="icon"><span class="icon-unit-health"></span></div><span>Health</span></a></li>
+                        <li>
+                            <a href="javascript:{}">
+                                <div class="icon"><span class="icon-unit-health"></span></div><span>Health</span>
+                                <div class="indicator danger"></div>
+                            </a>
+                        </li>
                         <li><a href="javascript:{}"><div class="icon"><span class="icon-crime-area"></span></div><span>Crime Area</span></a></li>
                         <li><a href="javascript:{}"><div class="icon"><span class="icon-arrow-up"></span></div><span>Tracker</span></a></li>
                     </ol>
                     <!-- /Hexagon -->
 
+                    <!-- Welcome -->
+                    <div id="welcome">
+                        <h2>Good Evening Dr. Cyrus</h2>
+                        <p>Welcome to TRACKER Live App where you can easily manage and track your vehicle as well as benefiting from great range of offers brought to you by TRACKER.</p>
+                    </div>
+                    <!-- /Welcome -->
+
                 </div>
             </div>
         </main>
     </div>
-    <!--<script type="text/javascript" src="../content/js/script.js"></script>-->
+    <script type="text/javascript" src="../content/js/script.js"></script>
 </body>
 </html>

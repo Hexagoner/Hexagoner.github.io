@@ -3,8 +3,8 @@
 */
 
 .container {
-    padding-right: 16px;
-    padding-left: 16px;
+    padding-right: 32px;
+    padding-left: 32px;
 
     > .inner {
         position: relative;
@@ -20,7 +20,14 @@
         }
     }
 }
-    
+   
+
+.btn {
+    [class^="icon-"] {
+        font-size: 100%;
+    }
+}
+
 @media (min-width: 0) and (max-width: 480px)  {
     .container {
         width: 100%;
@@ -41,13 +48,18 @@
 
 $textPrimary : #101326;
 $textSecondary : #909396;
+$textParagraph: #c0c3c6;
+$textHeading: #ffffff;
 
 $fontFamily: "Roboto", sans-serif;
 
+/*
+    General
+*/
 html, body {
     font-family: $fontFamily;
-    height: 100%;
     min-height: 100%;
+    background: #101326;
 }
 html {
 }
@@ -55,11 +67,151 @@ body {
     font-size: 62.5%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+}
+
 h2 {
     @include font-size(1.8);
+    color: $textHeading;
+    margin-bottom: 24px;
 }
+
 p {
     @include font-size(1.4);
+    color: $textParagraph;
+    line-height: 22px;
+    margin: 0 0 16px;
+}
+
+
+/*
+    Utilities
+*/
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    z-index: 9999;
+
+    &:after {
+        width: 24px;
+        height: 24px;
+        content: "";
+        position: absolute;
+        top: -7px;
+        left: -7px;
+        border-radius: 100%;
+        opacity: 0.2;
+    }
+
+    &.danger {
+        background: #dd0044;
+        &:after {
+            background: #dd0044;
+        }
+    }
+    &.success {}
+
+}
+
+/*
+    Header & Content
+*/
+#header,
+#content {
+    position: relative;
+    width: 100%;
+    clear: both;
+}
+
+/*
+    Header
+*/
+#header {
+    position: fixed;
+    height: 60px;
+    /*background: #191629;*/
+    z-index: 9;
+    box-shadow: 0 0 8px 0 rgba(3, 6, 25, 0.25);
+
+    > .container {
+        height: 100%;
+
+        > .inner {
+            height: 100%;
+        }
+    }
+
+}
+
+
+/*
+    Content
+*/
+#content {
+    height: auto;
+}
+
+/*
+    Title
+*/
+#title {
+    @include font-size(2.0);
+    line-height: 60px;
+    height: 60px;
+    text-transform: none;
+    color: $textHeading;
+    width: 70%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    text-align: center;
+}
+
+/*
+    Nav
+*/
+#nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
+    list-style: none;
+    display: block;
+    height: auto;
+    width: 100%;
+
+    li {
+        width: 40px;
+        height: 60px;
+        line-height: 60px;
+        margin: 0;
+        padding: 0;
+        color: #ffffff;
+        display: inline-block;
+        float: left;
+
+        &:nth-child(n+2) {
+        }
+
+        &:nth-child(n+3) {
+            float: right;
+        }
+
+        .btn {
+            background: none;
+            border: none;
+            @include font-size(2.6);
+            padding: 0;
+            margin: 0;
+            line-height: inherit;
+            height: 100%;
+            width: 100%;
+        }
+
+    }
 }
 
 /*
@@ -69,16 +221,15 @@ p {
     list-style: none;
     padding: 0;
     height: 360px;
-    position: absolute;
-    top: 50%;
-    left: 0;
+    position: relative;
     width: 100%;
-    margin: -180px 0 0 0;
+    margin: 188px 0 0 0;
 
     &:after {
         display: table;
         width: 100%;
         clear: both;
+        content: "";
     }
 
 
@@ -93,7 +244,29 @@ p {
         left: 50%;
         top: 50%;
         color: #192939;
-    
+
+        &:nth-child(1) {
+        margin: -58px 0 0 -56px;
+        }
+        &:nth-child(2) {
+            margin: -150px 0 0 -3px;
+        }
+        &:nth-child(3) {
+            margin: -58px 0 0 50px;
+        }
+        &:nth-child(4) {
+            margin: 33px 0 0 -3px;
+        }
+        &:nth-child(5) {
+            margin: 33px 0 0 -108px;
+        }
+        &:nth-child(6) {
+            margin: -58px 0 0 -162px;
+        }
+        &:nth-child(7) {
+            margin: -150px 0 0 -108px;
+        }
+
         a {
             color: inherit;
             position: relative;
@@ -129,29 +302,13 @@ p {
 	            vertical-align: middle;
 	            height: 24px;
             }
-        }
 
-    }
-    li:nth-child(1) {
-        margin: -58px 0 0 -56px;
-    }
-    li:nth-child(2) {
-        margin: -150px 0 0 -3px;
-    }
-    li:nth-child(3) {
-        margin: -58px 0 0 50px;
-    }
-    li:nth-child(4) {
-        margin: 33px 0 0 -3px;
-    }
-    li:nth-child(5) {
-        margin: 33px 0 0 -108px;
-    }
-    li:nth-child(6) {
-        margin: -58px 0 0 -162px;
-    }
-    li:nth-child(7) {
-        margin: -150px 0 0 -108px;
+            > .indicator {
+	            top: 84px;
+	            left: 16px;
+	            position: absolute;
+            }
+        }
     }
 }
 
@@ -159,8 +316,13 @@ p {
     Welcome
 */
 #welcome {
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    margin: 0 0 40px;
+
+    h1, h2, h3 {
+        margin: 0 0 8px;
+        text-transform: uppercase;
+    }
 }
 
 /*
@@ -169,7 +331,7 @@ p {
 
 #root {
     height: 100%;
-	min-height: 100%;
+	min-height: 680px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0;
@@ -183,64 +345,17 @@ p {
 */
 @media (min-width: 0) and (max-width: 480px)  {
     html, body {
-        overflow: hidden;
+        overflow-x: hidden;
         min-width: 320px;
         max-width: 480px;
     }
 
     body {
-        background: url(../img/background-index.png) no-repeat center 0 #101326;
-        background-size: 414px !important;
+        
     }
     #root.mobile {
+        background: url(../img/background-index.png) no-repeat center 0 #101326;
+        background-size: 414px;
         display: block;
-    }
-}
-
-#header,
-#content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    clear: both;
-
-    > .container {
-        position: relative;
-        height: 100%;
-
-        > .inner {
-            height: 100%;
-        }
-    }
-
-}
-
-
-/*
-    Header
-*/
-#header {
-    height: 40px;
-
-    .btn {
-        background: none;
-        border: none;
-    }
-
-}
-
-
-/*
-    Content
-*/
-#content {
-    height: 100%;
-}
-
-
-.btn {
-    [class^="icon-"] {
-        font-size: 100%;
     }
 }

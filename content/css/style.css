@@ -2,8 +2,8 @@
     Framework
 */
 .container {
-  padding-right: 16px;
-  padding-left: 16px; }
+  padding-right: 32px;
+  padding-left: 32px; }
   .container > .inner {
     position: relative;
     width: 100%;
@@ -15,25 +15,139 @@
       clear: both;
       overflow: hidden; }
 
+.btn [class^="icon-"] {
+  font-size: 100%; }
+
 @media (min-width: 0) and (max-width: 480px) {
   .container {
     width: 100%; } }
 
+/*
+    General
+*/
 html, body {
   font-family: "Roboto", sans-serif;
-  height: 100%;
-  min-height: 100%; }
+  min-height: 100%;
+  background: #101326; }
 
 body {
   font-size: 62.5%; }
 
 h2 {
   font-size: 18px;
-  font-size: 1.8rem; }
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 24px; }
 
 p {
   font-size: 14px;
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  color: #c0c3c6;
+  line-height: 22px;
+  margin: 0 0 16px; }
+
+/*
+    Utilities
+*/
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  z-index: 9999; }
+  .indicator:after {
+    width: 24px;
+    height: 24px;
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    border-radius: 100%;
+    opacity: 0.2; }
+  .indicator.danger {
+    background: #dd0044; }
+    .indicator.danger:after {
+      background: #dd0044; }
+
+/*
+    Header & Content
+*/
+#header,
+#content {
+  position: relative;
+  width: 100%;
+  clear: both; }
+
+/*
+    Header
+*/
+#header {
+  position: fixed;
+  height: 60px;
+  /*background: #191629;*/
+  z-index: 9;
+  box-shadow: 0 0 8px 0 rgba(3, 6, 25, 0.25); }
+  #header > .container {
+    height: 100%; }
+    #header > .container > .inner {
+      height: 100%; }
+
+/*
+    Content
+*/
+#content {
+  height: auto; }
+
+/*
+    Title
+*/
+#title {
+  font-size: 20px;
+  font-size: 2rem;
+  line-height: 60px;
+  height: 60px;
+  text-transform: none;
+  color: #ffffff;
+  width: 70%;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 15%;
+  text-align: center; }
+
+/*
+    Nav
+*/
+#nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 10px;
+  margin: 0;
+  list-style: none;
+  display: block;
+  height: auto;
+  width: 100%; }
+  #nav li {
+    width: 40px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    display: inline-block;
+    float: left; }
+    #nav li:nth-child(n+3) {
+      float: right; }
+    #nav li .btn {
+      background: none;
+      border: none;
+      font-size: 26px;
+      font-size: 2.6rem;
+      padding: 0;
+      margin: 0;
+      line-height: inherit;
+      height: 100%;
+      width: 100%; }
 
 /*
     Hexagon
@@ -42,15 +156,14 @@ p {
   list-style: none;
   padding: 0;
   height: 360px;
-  position: absolute;
-  top: 50%;
-  left: 0;
+  position: relative;
   width: 100%;
-  margin: -180px 0 0 0; }
+  margin: 188px 0 0 0; }
   #hexagon:after {
     display: table;
     width: 100%;
-    clear: both; }
+    clear: both;
+    content: ""; }
   #hexagon li {
     width: 110px;
     height: 124px;
@@ -62,6 +175,20 @@ p {
     left: 50%;
     top: 50%;
     color: #192939; }
+    #hexagon li:nth-child(1) {
+      margin: -58px 0 0 -56px; }
+    #hexagon li:nth-child(2) {
+      margin: -150px 0 0 -3px; }
+    #hexagon li:nth-child(3) {
+      margin: -58px 0 0 50px; }
+    #hexagon li:nth-child(4) {
+      margin: 33px 0 0 -3px; }
+    #hexagon li:nth-child(5) {
+      margin: 33px 0 0 -108px; }
+    #hexagon li:nth-child(6) {
+      margin: -58px 0 0 -162px; }
+    #hexagon li:nth-child(7) {
+      margin: -150px 0 0 -108px; }
     #hexagon li a {
       color: inherit;
       position: relative;
@@ -92,34 +219,27 @@ p {
         font-weight: 800;
         vertical-align: middle;
         height: 24px; }
-  #hexagon li:nth-child(1) {
-    margin: -58px 0 0 -56px; }
-  #hexagon li:nth-child(2) {
-    margin: -150px 0 0 -3px; }
-  #hexagon li:nth-child(3) {
-    margin: -58px 0 0 50px; }
-  #hexagon li:nth-child(4) {
-    margin: 33px 0 0 -3px; }
-  #hexagon li:nth-child(5) {
-    margin: 33px 0 0 -108px; }
-  #hexagon li:nth-child(6) {
-    margin: -58px 0 0 -162px; }
-  #hexagon li:nth-child(7) {
-    margin: -150px 0 0 -108px; }
+      #hexagon li a > .indicator {
+        top: 84px;
+        left: 16px;
+        position: absolute; }
 
 /*
     Welcome
 */
 #welcome {
-  position: absolute;
-  bottom: 0; }
+  position: relative;
+  margin: 0 0 40px; }
+  #welcome h1, #welcome h2, #welcome h3 {
+    margin: 0 0 8px;
+    text-transform: uppercase; }
 
 /*
     Root
 */
 #root {
   height: 100%;
-  min-height: 100%;
+  min-height: 680px;
   width: 100%;
   margin: 0 auto;
   padding: 0;
@@ -132,44 +252,10 @@ p {
 */
 @media (min-width: 0) and (max-width: 480px) {
   html, body {
-    overflow: hidden;
+    overflow-x: hidden;
     min-width: 320px;
     max-width: 480px; }
-  body {
-    background: url(../img/background-index.png) no-repeat center 0 #101326;
-    background-size: 414px !important; }
   #root.mobile {
+    background: url(../img/background-index.png) no-repeat center 0 #101326;
+    background-size: 414px;
     display: block; } }
-
-#header,
-#content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  clear: both; }
-  #header > .container,
-  #content > .container {
-    position: relative;
-    height: 100%; }
-    #header > .container > .inner,
-    #content > .container > .inner {
-      height: 100%; }
-
-/*
-    Header
-*/
-#header {
-  height: 40px; }
-  #header .btn {
-    background: none;
-    border: none; }
-
-/*
-    Content
-*/
-#content {
-  height: 100%; }
-
-.btn [class^="icon-"] {
-  font-size: 100%; }
