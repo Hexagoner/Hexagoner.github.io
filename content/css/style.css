@@ -18,6 +18,10 @@
 .btn [class^="icon-"] {
   font-size: 100%; }
 
+.btn.focus, .btn:focus, .btn:hover {
+  color: #ffffff;
+  outline: none; }
+
 @media (min-width: 0) and (max-width: 480px) {
   .container {
     width: 100%; } }
@@ -83,13 +87,15 @@ p {
 #header {
   position: fixed;
   height: 60px;
-  /*background: #191629;*/
   z-index: 9;
-  box-shadow: 0 0 8px 0 rgba(3, 6, 25, 0.25); }
+  /* IF Scrolled */ }
   #header > .container {
     height: 100%; }
     #header > .container > .inner {
       height: 100%; }
+  #header.scrolled {
+    background: #191629;
+    box-shadow: 0 0 16px 8px rgba(3, 6, 25, 0.5); }
 
 /*
     Content
@@ -112,7 +118,8 @@ p {
   position: absolute;
   top: 0;
   left: 15%;
-  text-align: center; }
+  text-align: center;
+  font-weight: 400; }
 
 /*
     Nav
