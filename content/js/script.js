@@ -62,11 +62,17 @@ window.onload = function() {
     Add header background when page scrolls
 */
 $(function () {
-    $(window).on("scroll", function () {
+
+    var fun = function () {
         if ($(window).scrollTop() > 10) {
             $('#' + app.DOM.header).addClass('scrolled');
         } else {
             $('#' + app.DOM.header).removeClass('scrolled');
         }
-    });
+    }
+
+    $(window).on("scroll", fun);
+
+    window.addEventListener('scroll', fun);
+
 });
