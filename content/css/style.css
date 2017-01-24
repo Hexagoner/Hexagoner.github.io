@@ -1,0 +1,144 @@
+/*
+    Framework
+*/
+.container {
+  padding-right: 16px;
+  padding-left: 16px; }
+
+@media (min-width: 0) and (max-width: 480px) {
+  .container {
+    width: 100%; } }
+
+html, body {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  min-height: 100%; }
+
+body {
+  font-size: 62.5%; }
+
+#hexagon {
+  list-style: none;
+  padding: 0;
+  height: 360px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  margin: -180px 0 0 0; }
+  #hexagon:after {
+    display: table;
+    width: 100%;
+    clear: both; }
+  #hexagon li {
+    width: 110px;
+    height: 124px;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center center, center center;
+    background-image: url(../img/hexagon-inner.png), url(../img/hexagon-outer.png);
+    background-size: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #192939; }
+    #hexagon li a {
+      color: inherit;
+      position: relative;
+      width: 80%;
+      height: 80%;
+      display: block;
+      margin: 10%; }
+      #hexagon li a div:nth-child(1) {
+        font-size: 48px;
+        color: inherit;
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        text-align: center; }
+      #hexagon li a span:nth-child(2) {
+        line-height: 20px;
+        font-size: 16px;
+        width: 60%;
+        height: auto;
+        text-align: center;
+        position: absolute;
+        bottom: 40px;
+        left: 20%;
+        text-transform: uppercase;
+        color: inherit;
+        font-weight: 800; }
+  #hexagon li:nth-child(1) {
+    margin: -58px 0 0 -56px; }
+  #hexagon li:nth-child(2) {
+    margin: -150px 0 0 -3px; }
+  #hexagon li:nth-child(3) {
+    margin: -58px 0 0 50px; }
+  #hexagon li:nth-child(4) {
+    margin: 33px 0 0 -3px; }
+  #hexagon li:nth-child(5) {
+    margin: 33px 0 0 -108px; }
+  #hexagon li:nth-child(6) {
+    margin: -58px 0 0 -162px; }
+  #hexagon li:nth-child(7) {
+    margin: -150px 0 0 -108px; }
+
+/*
+    Root
+*/
+#root {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: none; }
+
+/*
+    IF { Mobile }
+*/
+@media (min-width: 0) and (max-width: 480px) {
+  html, body {
+    overflow: hidden;
+    min-width: 320px;
+    max-width: 480px; }
+  body {
+    background: url(../img/background-index.png) no-repeat center 0 #101326;
+    background-size: 414px !important; }
+  #root.mobile {
+    display: block; } }
+
+#header,
+#content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  clear: both; }
+  #header > .container,
+  #content > .container {
+    position: relative;
+    height: 100%; }
+
+/*
+    Header
+*/
+#header {
+  height: 40px; }
+  #header .btn {
+    background: none;
+    border: none; }
+
+/*
+    Content
+*/
+#content {
+  height: 100%;
+  margin-top: 40px; }
+
+.btn [class^="icon-"] {
+  font-size: 100%; }
