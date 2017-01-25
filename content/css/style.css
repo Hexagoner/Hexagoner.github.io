@@ -267,12 +267,10 @@ p {
   html.orientation-landscape #root {
     transform: rotate(-90deg); }
   html.orientation-portrait #root {
-    transform: rotate(0deg); }
+    transform: initial; }
   html.device-mobile.page-default #root {
     background: url(../img/background-index.png) no-repeat center 0 #101326;
     background-size: 414px; }
-  html.device-mobile.page-default #page-default {
-    display: block; }
   .container {
     width: 100%;
     max-width: none;
