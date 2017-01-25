@@ -1,7 +1,6 @@
-/*
+/*  ****************************************
     Framework
-*/
-
+    ****************************************    */
 .container {
     padding-right: 32px;
     padding-left: 32px;
@@ -20,7 +19,6 @@
         }
     }
 }
-   
 
 .btn {
     [class^="icon-"] {
@@ -34,14 +32,9 @@
 
 }
 
-@media (min-width: 0) and (max-width: 480px)  {
-    .container {
-        width: 100%;
-    }
-}
-
-
-
+/*  ****************************************
+    SASS Mixins
+    ****************************************    */
 
 @mixin font-size($sizeValue: 1.6) {
     font-size: ($sizeValue * 10) + px;
@@ -50,7 +43,9 @@
 
 
 
-
+/*  ****************************************
+    Variables
+    ****************************************    */
 
 $textPrimary : #101326;
 $textSecondary : #909396;
@@ -59,9 +54,9 @@ $textHeading: #ffffff;
 
 $fontFamily: "Roboto", sans-serif;
 
-/*
+/*  ****************************************
     General
-*/
+    ****************************************    */
 html, body {
     font-family: $fontFamily;
     min-height: 100%;
@@ -89,10 +84,9 @@ p {
     margin: 0 0 16px;
 }
 
-
-/*
+/*  ****************************************
     Utilities
-*/
+    ****************************************    */
 .indicator {
     width: 10px;
     height: 10px;
@@ -120,9 +114,9 @@ p {
 
 }
 
-/*
-    Header & Content
-*/
+/*  ****************************************
+    Header, Content, Footer
+    ****************************************    */
 #header,
 #content {
     position: relative;
@@ -130,9 +124,9 @@ p {
     clear: both;
 }
 
-/*
+/*  ****************************************
     Header
-*/
+    ****************************************    */
 #header {
     position: fixed;
     height: 60px;
@@ -155,16 +149,16 @@ p {
 }
 
 
-/*
+/*  ****************************************
     Content
-*/
+    ****************************************    */
 #content {
     height: auto;
 }
 
-/*
+/*  ****************************************
     Title
-*/
+    ****************************************    */
 #title {
     @include font-size(2.0);
     line-height: 60px;
@@ -180,9 +174,9 @@ p {
     font-weight: 400;
 }
 
-/*
+/*  ****************************************
     Nav
-*/
+    ****************************************    */
 #nav {
     position: absolute;
     top: 0;
@@ -225,9 +219,23 @@ p {
     }
 }
 
-/*
+/*  ****************************************
+    Root
+    ****************************************    */
+#root {
+    height: 100%;
+	min-height: 680px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+    transition: all 1s ease-in-out;
+}
+
+/*  ****************************************
     Hexagon
-*/
+    ****************************************    */
 #hexagon {
     list-style: none;
     padding: 0;
@@ -323,9 +331,9 @@ p {
     }
 }
 
-/*
+/*  ****************************************
     Welcome
-*/
+    ****************************************    */
 #welcome {
     position: relative;
     margin: 0 0 40px;
@@ -336,38 +344,65 @@ p {
     }
 }
 
-/*
-    Root
-*/
+/*  ****************************************
+    IF MOBILE
+    ****************************************    */
 
-#root {
-    height: 100%;
-	min-height: 680px;
-	width: 100%;
-	margin: 0 auto;
-	padding: 0;
-	position: relative;
-	overflow: hidden;
-    display: none;
-    transition: all 1s ease-in-out;
-}
-
-/*
-    IF { Mobile }
-*/
-@media (min-width: 0) and (max-width: 480px)  {
+@media (min-width: 0) and (max-width: 767px)  {
     html, body {
         overflow-x: hidden;
         min-width: 320px;
-        max-width: 480px;
+        max-width: 767px;
     }
 
-    body {
-        
+    html {
+
+        &.orientation-landscape {
+            #root {
+                transform: rotate(-90deg);
+            }
+        }
+
+        &.orientation-portrait {
+            #root {
+                transform: initial;
+            }
+        }
+
+        &.device-mobile {
+
+            &.page-default {
+                #root {
+                    background: url(../img/background-index.png) no-repeat center 0 #101326;
+                    background-size: 414px;
+                }
+            }
+            &.page- {}
+            &.page- {}
+            &.page- {}
+            &.page- {}
+            &.page- {}
+            &.page- {}
+        }
     }
-    #root.mobile {
-        background: url(../img/background-index.png) no-repeat center 0 #101326;
-        background-size: 414px;
-        display: block;
+
+    .container {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
     }
+}
+
+/*  ****************************************
+    IF TABLET
+    ****************************************    */
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+}
+
+/*  ****************************************
+    IF DESKTOP
+    ****************************************    */
+
+@media (min-width: 1025px)  {
 }
