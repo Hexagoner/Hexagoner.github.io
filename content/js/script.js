@@ -55,7 +55,17 @@ window.onload = function() {
 };
 
 
-
+/*
+    Lock the screen orientation to portrait mode
+*/
+$(document).ready(function () {
+    function reorient(e) {
+        var portrait = (window.orientation % 180 == 0);
+        $("#root").css("-webkit-transform", !portrait ? "rotate(-90deg)" : "");
+    }
+    window.onorientationchange = reorient;
+    window.setTimeout(reorient, 0);
+});
 
 
 /*
