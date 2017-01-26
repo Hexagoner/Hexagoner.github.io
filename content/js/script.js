@@ -4,6 +4,8 @@
 
 var app = app || {};
 
+app.method = app.method || {};
+
 app.page = {
     default: "page-default",
     protect: "page-protect",
@@ -44,10 +46,62 @@ app.dimension = {
     content: {
         width: $('#' + app.DOM.content).width(),
         height: $('#' + app.DOM.content).height()
-    },
+    }
 }
 
-app.method = app.method || {};
+app.method.updateDimension = function () {
+    app.dimension = {
+        document: {
+            width: $(document).width(),
+            height: $(document).height()
+        },
+        window: {
+            width: $(window).width(),
+            height: $(window).height()
+        },
+        header: {
+            width: $('#' + app.DOM.header).width(),
+            height: $('#' + app.DOM.header).height()
+        },
+        content: {
+            width: $('#' + app.DOM.content).width(),
+            height: $('#' + app.DOM.content).height()
+        }
+    }
+
+    return app.dimension;
+}
+
+app.device = function () {
+    var width = app.dimension.window.width,
+        height = app.dimension.window.height,
+        //mobile = false,
+        //tablet = false,
+        //desktop = false,
+        device;
+
+    if (width) {
+        if (width <= 767) {
+            //mobile = true,
+            //tablet = false,
+            //desktop = false;
+            device = 'MOBILE';
+        }
+        else if (width <= 1024) {
+            //mobile = false,
+            //tablet = true,
+            //desktop = false;
+            device = 'TABLET';
+        }
+        else if (width => 1025) {
+            //mobile = false,
+            //tablet = false,
+            //desktop = true;
+            device = 'DESKTOP';
+        }
+        return device;
+    }
+}
 
 
 /*  ****************************************
@@ -74,7 +128,42 @@ app.method.activatePage = function () {
 
 
 /*  ****************************************
+    Lock Orientation
     ****************************************    */
+app.method.lockOrientation = function () {
+    var html = $('html'),
+        body = $('body'),
+        root = $(app.DOM.root);
+    if (app.device() == 'MOBILE')
+
+    switch (window.orientation) {
+        case -90:
+        case 90:
+            html.css({
+                'overflow-x': 'auto',
+                'overflow-y': 'hidden'
+            });
+            body.css({
+                'overflow-x': 'auto',
+                'overflow-y': 'hidden'
+            });
+            root.css({
+                'position': 'absolute',
+                'width': app.dimension.window.height,
+                'height': app.dimension.window.width,
+                'top': '-' + 146,
+                'left': 146
+            });
+            $('html').removeClass('orientation-portrait').addClass('orientation-landscape');
+            break;
+        default:
+            html.css('');
+            body.css('');
+            root.css('');
+            $('html').removeClass('orientation-landscape').addClass('orientation-portrait');
+            break;
+    }
+}
 
 /*  ****************************************
     ****************************************    */
@@ -83,43 +172,46 @@ app.method.activatePage = function () {
     ****************************************    */
 
 /*  ****************************************
+    Nav
     ****************************************    */
-
-
-// Header buttons
-var headerButtons = function () {
-
-    console.log('Header buttons...');
+app.nav = function () {
 
     for (var key in app.DOM.button) {
 
         var id = app.DOM.button[key];
-
         var element = document.getElementById(id);
-
-        console.log(element)
 
         if (element) {
             element.addEventListener('click', function () {
 
-                console.log('You clicked on the ' + id);
+                //console.log('You clicked on the ' + id);
 
             });
         }
-
     }
+}
 
-};
 
+/*  ****************************************
+    Init
+    ****************************************    */
 app.init = function () {
 
-    console.log(app.page, app.DOM.page)
+    // Nav
+    app.nav();
 
-    console.log('Init...')
+    // Dimension
+    app.dimension;
 
-    headerButtons();
+    // Device
+    app.device;
 
+    // Activate Page
     app.method.activatePage();
+
+    // Lock Orientation
+    app.method.lockOrientation();
+    window.addEventListener('orientationchange', app.method.lockOrientation);
 
 };
 
@@ -128,35 +220,19 @@ window.onload = function() {
     return app.init();
 };
 
+$(window).on('resize', function () {
+    app.method.updateDimension();
+    app.device();
 
-/*
-    \\\\\\\\\\\\\\\\\\\\////////////////////
-*/
+    console.log(app.device())
+
+});
 
 
-/*
-    Lock the screen orientation to portrait mode
-*/
-function doOnOrientationChange() {
-    switch (window.orientation) {
-        case -90:
-        case 90:
-            $('html').removeClass('orientation-portrait').addClass('orientation-landscape');
-            break;
-        default:
-            $('html').removeClass('orientation-landscape').addClass('orientation-portrait');
-            break;
-    }
-}
 
-window.addEventListener('orientationchange', doOnOrientationChange);
 
-// Initial execution if needed
-doOnOrientationChange();
 
-/*
-    \\\\\\\\\\\\\\\\\\\\////////////////////
-*/
+
 
 /*
     Add header background when page scrolls
