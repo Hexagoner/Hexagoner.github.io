@@ -134,11 +134,12 @@ app.method.lockOrientation = function () {
     var html = $('html'),
         body = $('body'),
         root = $(app.DOM.root);
-    if (app.device() == 'MOBILE')
+    //if (app.device() == 'MOBILE')
 
     switch (window.orientation) {
         case -90:
         case 90:
+
             html.css({
                 'overflow-x': 'auto',
                 'overflow-y': 'hidden'
@@ -154,12 +155,13 @@ app.method.lockOrientation = function () {
                 'top': '-' + 146,
                 'left': 146
             });
+
             $('html').removeClass('orientation-portrait').addClass('orientation-landscape');
             break;
         default:
-            html.css('');
-            body.css('');
-            root.css('');
+            html.removeAttr('style');
+            body.removeAttr('style');
+            root.removeAttr('style');
             $('html').removeClass('orientation-landscape').addClass('orientation-portrait');
             break;
     }
