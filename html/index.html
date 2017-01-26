@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../content/fonts/tracker-icons/tracker-icons.css">
     <link rel="stylesheet" type="text/css" href="../content/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../content/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="../content/css/animate.css">
     <link rel="stylesheet" type="text/css" href="../content/css/style.css">
 </head>
 <body>
@@ -22,13 +23,13 @@
     <div id="root">
         <header id="header">
             <h1 id="title">TRACKER Web App</h1>
-            <ul id="nav">
-                <li><button class="btn" id="button-back" title="Back" role="button"><span class="icon-arrow-left"></span></button></li>
-                <li><button class="btn" id="button-menu" title="Menu" role="button"><span class="icon-menu"></span></button></li>
-                <li><button class="btn" id="button-notification" title="Notification" role="button"><span class="icon-bell"></span></button></li>
-                <li><button class="btn hidden" id="button-info" title="Info" role="button"><span class="icon-info"></span></button></li>
-                <li><button class="btn hidden" id="button-filter" title="Filter" role="button"><span class="icon-filter"></span></button></li>
-            </ul>
+            <div id="nav">
+                <button class="btn hidden" id="button-back" title="Back" role="button"><span class="icon-arrow-left"></span></button>
+                <button class="btn hidden" id="button-menu" title="Menu" role="button"><span class="icon-menu"></span></button>
+                <button class="btn" id="button-notification" title="Notification" role="button"><span class="icon-bell"></span></button>
+                <button class="btn hidden" id="button-info" title="Info" role="button"><span class="icon-info"></span></button>
+                <button class="btn hidden" id="button-filter" title="Filter" role="button"><span class="icon-filter"></span></button>
+            </div>
         </header>
         <main id="content">
             <div class="container">
@@ -39,21 +40,48 @@
                         <!-- Default -->
                         <div id="page-default" class="">
                             <!-- Hexagon -->
-                            <ol id="hexagon">
-                                <li><a href="javascript:{}"></a></li>
-                                <li><a href="javascript:{}"><div class="icon"><span class="icon-car-unprotect2"></span></div><span>Protect My Car</span></a></li>
-                                <li><a href="javascript:{}"><div class="icon"><span class="icon-car-find"></span></div><span>Find My Car</span></a></li>
-                                <li><a href="javascript:{}"><div class="icon"><span class="icon-basket"></span></div><span>Offers</span></a></li>
-                                <li>
-                                    <a href="javascript:{}">
-                                        <div class="icon"><span class="icon-unit-health"></span></div><span>Health</span>
+                            <ol id="hexagon" class="hexagon">
+                                <li class="item"><a href="javascript:{}"><div class="icon"><span class="icon-car-unprotect2"></span></div><span>Protect My Car</span></a></li>
+                                <li class="item">
+                                    <a href="javascript:{}"><div class="icon"><span class="icon-car-find"></span></div><span>Find My Car</span></a>
+                                    <ol class="subhexagon hidden">
+                                        <li class="item"><a href="javascript:{}"><span>Route to My Car</span></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>Show My Car on Map</span></a></li>
+                                    </ol>
+                                </li>
+                                <li class="item"><a href="javascript:{}"><div class="icon"><span class="icon-basket"></span></div><span>Offers</span></a></li>
+                                <li class="item">
+                                    <a href="javascript:{}"><div class="icon"><span class="icon-unit-health"></span></div><span>Health</span>
                                         <div class="indicator danger"></div>
                                     </a>
+                                    <ol class="subhexagon hidden">
+                                        <li class="item"><a href="javascript:{}"><span>Unit Health</span></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>Battery Health</span><div class="indicator danger"></div></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>Tyre Health</span></a></li>
+                                    </ol>
                                 </li>
-                                <li><a href="javascript:{}"><div class="icon"><span class="icon-crime-area"></span></div><span>Crime Area</span></a></li>
-                                <li><a href="javascript:{}"><div class="icon"><span class="icon-arrow-up"></span></div><span>Tracker</span></a></li>
+                                <li class="item">
+                                    <a href="javascript:{}"><div class="icon"><span class="icon-crime-area"></span></div><span>Crime Area</span></a>
+                                    <ol class="subhexagon hidden">
+                                        <li class="item"><a href="javascript:{}"><span>Alternative Parking</span></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>Nearest Car Park</span></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>Crime Area Statistics</span></a></li>
+                                    </ol>
+                                </li>
+                                <li class="item">
+                                    <a href="javascript:{}"><div class="icon"><span class="icon-arrow-up"></span></div><span>Tracker</span></a>
+                                    <ol class="subhexagon hidden">
+                                        <li class="item"><a href="javascript:{}"><span>Report Vehicle Theft</span></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>My Account</span></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>Preferences</span></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>Social Media</span></a></li>
+                                        <li class="item"><a href="javascript:{}"><span>Help &amp; Support</span></a></li>
+                                    </ol>
+                                </li>
+                                <li class="logo"><a href="javascript:{}"></a></li>
                             </ol>
                             <!-- /Hexagon -->
+
                             <!-- Welcome -->
                             <div id="welcome">
                                 <h2>Good Evening Dr. Cyrus</h2>

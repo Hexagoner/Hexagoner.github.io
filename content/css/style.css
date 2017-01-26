@@ -136,7 +136,7 @@ p {
   display: block;
   height: auto;
   width: 100%; }
-  #nav li {
+  #nav > .btn {
     width: 40px;
     height: 60px;
     line-height: 60px;
@@ -144,19 +144,13 @@ p {
     padding: 0;
     color: #ffffff;
     display: inline-block;
-    float: left; }
-    #nav li:nth-child(n+3) {
+    float: left;
+    background: none;
+    border: none;
+    font-size: 26px;
+    font-size: 2.6rem; }
+    #nav > .btn:nth-child(n+3) {
       float: right; }
-    #nav li .btn {
-      background: none;
-      border: none;
-      font-size: 26px;
-      font-size: 2.6rem;
-      padding: 0;
-      margin: 0;
-      line-height: inherit;
-      height: 100%;
-      width: 100%; }
 
 /*  ****************************************
     Root
@@ -174,19 +168,19 @@ p {
 /*  ****************************************
     Hexagon
     ****************************************    */
-#hexagon {
+.hexagon, .subhexagon {
   list-style: none;
   padding: 0;
   height: 360px;
   position: relative;
   width: 100%;
   margin: 188px 0 0 0; }
-  #hexagon:after {
+  .hexagon:after, .subhexagon:after {
     display: table;
     width: 100%;
     clear: both;
     content: ""; }
-  #hexagon li {
+  .hexagon > li, .subhexagon > li {
     width: 110px;
     height: 124px;
     background-repeat: no-repeat, no-repeat;
@@ -196,29 +190,33 @@ p {
     position: absolute;
     left: 50%;
     top: 50%;
-    color: #192939; }
-    #hexagon li:nth-child(1) {
-      margin: -58px 0 0 -56px; }
-    #hexagon li:nth-child(2) {
+    color: #192939;
+    /*&:nth-child(0) {
+            margin: -58px 0 0 -56px;
+        }*/ }
+    .hexagon > li:nth-child(1), .subhexagon > li:nth-child(1) {
       margin: -150px 0 0 -3px; }
-    #hexagon li:nth-child(3) {
+    .hexagon > li:nth-child(2), .subhexagon > li:nth-child(2) {
       margin: -58px 0 0 50px; }
-    #hexagon li:nth-child(4) {
+    .hexagon > li:nth-child(3), .subhexagon > li:nth-child(3) {
       margin: 33px 0 0 -3px; }
-    #hexagon li:nth-child(5) {
+    .hexagon > li:nth-child(4), .subhexagon > li:nth-child(4) {
       margin: 33px 0 0 -108px; }
-    #hexagon li:nth-child(6) {
+    .hexagon > li:nth-child(5), .subhexagon > li:nth-child(5) {
       margin: -58px 0 0 -162px; }
-    #hexagon li:nth-child(7) {
+    .hexagon > li:nth-child(6), .subhexagon > li:nth-child(6) {
       margin: -150px 0 0 -108px; }
-    #hexagon li a {
+    .hexagon > li.selected, .hexagon > li.logo, .subhexagon > li.selected, .subhexagon > li.logo {
+      margin: -58px 0 0 -56px; }
+    .hexagon > li a, .subhexagon > li a {
       color: inherit;
       position: relative;
       width: 80%;
       height: 80%;
       display: block;
-      margin: 10%; }
-      #hexagon li a > .icon {
+      margin: 10%;
+      text-decoration: none; }
+      .hexagon > li a > .icon, .subhexagon > li a > .icon {
         font-size: 36px;
         color: inherit;
         width: 100%;
@@ -228,7 +226,7 @@ p {
         top: 24px;
         left: 0;
         text-align: center; }
-      #hexagon li a > span {
+      .hexagon > li a > span, .subhexagon > li a > span {
         line-height: 12px;
         font-size: 10px;
         width: 70%;
@@ -240,11 +238,38 @@ p {
         color: inherit;
         font-weight: 800;
         vertical-align: middle;
-        height: 24px; }
-      #hexagon li a > .indicator {
+        height: 24px;
+        word-break: break-word; }
+      .hexagon > li a > .indicator, .subhexagon > li a > .indicator {
         top: 84px;
         left: 16px;
         position: absolute; }
+    .hexagon > li.selected, .subhexagon > li.selected {
+      background-image: url(../img/hexagon-selected.png);
+      color: #00cccc; }
+      .hexagon > li.selected > a > .indicator, .subhexagon > li.selected > a > .indicator {
+        display: none; }
+    .hexagon > li.logo, .subhexagon > li.logo {
+      background-image: url(../img/hexagon-logo.png); }
+
+.subhexagon {
+  position: absolute;
+  top: -310px;
+  left: 0; }
+  .subhexagon > li > a {
+    display: table; }
+    .subhexagon > li > a > span {
+      line-height: 16px;
+      font-size: 12px;
+      width: 100%;
+      height: auto;
+      top: auto;
+      display: table-cell;
+      vertical-align: middle;
+      bottom: auto;
+      position: relative;
+      left: auto;
+      padding: 0 10%; }
 
 /*  ****************************************
     Welcome

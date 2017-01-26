@@ -27,6 +27,8 @@ app.DOM = {
         info: "button-info",
         filter: "button-filter"
     },
+    hexagon: 'hexagon',
+    welcome: 'welcome',
     page: app.page
 }
 
@@ -168,10 +170,65 @@ app.method.lockOrientation = function () {
 }
 
 /*  ****************************************
+    Hexagon
     ****************************************    */
+app.hexagon = function () {
+
+    var hexagon = document.getElementById(app.DOM.hexagon),
+        item = hexagon.querySelectorAll('.item'),
+        buttonBack = $('#' + app.DOM.button.back),
+        welcome = $('#' + app.DOM.welcome);
+
+    // Hexagon Item
+    item.forEach(function (element, index) {
+
+        // Animation
+        //animate(element, 'bounceIn');
+
+        element.addEventListener('click', function (event) {
+            var subhexagon = $(element).find('.subhexagon');
+            if (subhexagon.length) {
+
+                // Hide Welcome
+                welcome.addClass('hidden');
+
+                // Hide Hexagon Items
+                $(element).siblings('li').addClass('hidden');
+                $(element).addClass('selected');
+
+                // Show Subhexagon
+                subhexagon.removeClass('hidden');
+
+                // Show Back Button
+                buttonBack.removeClass('hidden');
+            }
+        });
+    });
+    
+    // Back Button
+    buttonBack.on('click', function () {
+        var selected = $(hexagon).find('> .selected');
+
+        // Hide Subhexagon
+        selected.find('.subhexagon').addClass('hidden');
+        selected.removeClass('selected');
+
+        // Show Hexagon Items
+        selected.siblings('li').removeClass('hidden');
+
+        // Show Welcome
+        welcome.removeClass('hidden');
+
+        // Hide Back Button
+        $(this).addClass('hidden');
+    });
+
+}
 
 /*  ****************************************
+    Breadcrumb
     ****************************************    */
+
 
 /*  ****************************************
     Nav
@@ -198,6 +255,9 @@ app.nav = function () {
     Init
     ****************************************    */
 app.init = function () {
+
+    // Hexagon
+    app.hexagon();
 
     // Nav
     app.nav();

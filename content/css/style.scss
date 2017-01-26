@@ -188,7 +188,7 @@ p {
     height: auto;
     width: 100%;
 
-    li {
+    > .btn {
         width: 40px;
         height: 60px;
         line-height: 60px;
@@ -198,6 +198,10 @@ p {
         display: inline-block;
         float: left;
 
+        background: none;
+            border: none;
+            @include font-size(2.6);
+
         &:nth-child(n+2) {
         }
 
@@ -206,14 +210,7 @@ p {
         }
 
         .btn {
-            background: none;
-            border: none;
-            @include font-size(2.6);
-            padding: 0;
-            margin: 0;
-            line-height: inherit;
-            height: 100%;
-            width: 100%;
+            
         }
 
     }
@@ -236,7 +233,7 @@ p {
 /*  ****************************************
     Hexagon
     ****************************************    */
-#hexagon {
+.hexagon, .subhexagon {
     list-style: none;
     padding: 0;
     height: 360px;
@@ -250,9 +247,8 @@ p {
         clear: both;
         content: "";
     }
-
-
-    li {
+    
+    > li {
         width: 110px;
         height: 124px;
         background-repeat: no-repeat, no-repeat;
@@ -264,26 +260,29 @@ p {
         top: 50%;
         color: #192939;
 
+        /*&:nth-child(0) {
+            margin: -58px 0 0 -56px;
+        }*/
         &:nth-child(1) {
-        margin: -58px 0 0 -56px;
-        }
-        &:nth-child(2) {
             margin: -150px 0 0 -3px;
         }
-        &:nth-child(3) {
+        &:nth-child(2) {
             margin: -58px 0 0 50px;
         }
-        &:nth-child(4) {
+        &:nth-child(3) {
             margin: 33px 0 0 -3px;
         }
-        &:nth-child(5) {
+        &:nth-child(4) {
             margin: 33px 0 0 -108px;
         }
-        &:nth-child(6) {
+        &:nth-child(5) {
             margin: -58px 0 0 -162px;
         }
-        &:nth-child(7) {
+        &:nth-child(6) {
             margin: -150px 0 0 -108px;
+        }
+        &.selected, &.logo {
+            margin: -58px 0 0 -56px;
         }
 
         a {
@@ -293,6 +292,7 @@ p {
             height: 80%;
             display: block;
             margin: 10%;
+            text-decoration: none;
 
 
             > .icon {
@@ -320,12 +320,53 @@ p {
 	            font-weight: 800;
 	            vertical-align: middle;
 	            height: 24px;
+                word-break: break-word;
             }
 
             > .indicator {
 	            top: 84px;
 	            left: 16px;
 	            position: absolute;
+            }
+        }
+
+        &.selected {
+            background-image: url(../img/hexagon-selected.png);
+            color: #00cccc;
+
+            > a {
+                > .indicator {
+                    display: none;
+                }
+            }
+        }
+
+        &.logo {
+            background-image: url(../img/hexagon-logo.png);
+        }
+    }
+}
+.subhexagon {
+    position: absolute;
+    top: -310px;
+    left: 0;
+
+    > li {
+        > a {
+            display: table;
+
+            > span {
+                line-height: 16px;
+	            font-size: 12px;
+                width: 100%;
+	            height: auto;
+	            top: auto;
+	            display: table-cell;
+	            vertical-align: middle;
+	            bottom: auto;
+	            position: relative;
+	            left: auto;
+	            padding: 0 10%;
             }
         }
     }
