@@ -176,14 +176,15 @@ app.hexagon = function () {
 
     var hexagon = document.getElementById(app.DOM.hexagon),
         item = hexagon.querySelectorAll('.item'),
+        logo = hexagon.querySelector('.logo'),
         buttonBack = $('#' + app.DOM.button.back),
         welcome = $('#' + app.DOM.welcome);
 
+    // Animation
+    $(hexagon).addClass('animated zoomIn');
+
     // Hexagon Item
     item.forEach(function (element, index) {
-
-        // Animation
-        //animate(element, 'bounceIn');
 
         element.addEventListener('click', function (event) {
             var subhexagon = $(element).find('.subhexagon');
@@ -198,6 +199,7 @@ app.hexagon = function () {
 
                 // Show Subhexagon
                 subhexagon.removeClass('hidden');
+                subhexagon.addClass('animated zoomIn');
 
                 // Show Back Button
                 buttonBack.removeClass('hidden');
