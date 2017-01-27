@@ -60,6 +60,8 @@ $fontFamily: "Roboto", sans-serif;
 html, body {
     font-family: $fontFamily;
     min-height: 100%;
+    height: 100%;
+    position: relative;
     background: #101326;
 }
 html {
@@ -130,10 +132,15 @@ p {
 #header {
     position: fixed;
     height: 60px;
+    width: 100%;
     z-index: 9;
+    top: 0;
+    left: 0;
 
     > .container {
         height: 100%;
+        max-width: 420px;
+        position: relative;
 
         > .inner {
             height: 100%;
@@ -154,6 +161,30 @@ p {
     ****************************************    */
 #content {
     height: auto;
+    min-height: 100%;
+
+    #page {
+        min-height: 100%;
+
+        &:after {
+            display: block;
+            clear: both;
+            content: "";
+            width: 100%;
+            height: 0;
+        }
+
+        > .item {
+
+            min-height: 100%;
+
+            > .container {
+                padding-top: 80px;
+            }
+
+        }
+
+    }
 }
 
 /*  ****************************************
@@ -220,18 +251,19 @@ p {
     Root
     ****************************************    */
 #root {
-    height: 100%;
-	min-height: 680px;
+    height: auto;
+    min-height: 100%;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0;
 	position: relative;
 	overflow: hidden;
     transition: all 1s ease-in-out;
+    max-width: 420px;
 }
 
 /*  ****************************************
-    Hexagon
+    Hexagon & Subhexagon
     ****************************************    */
 .hexagon, .subhexagon {
     list-style: none;
@@ -239,7 +271,7 @@ p {
     height: 360px;
     position: relative;
     width: 100%;
-    margin: 188px 0 0 0;
+    margin: 108px 0 0 0;
 
     &:after {
         display: table;
@@ -260,9 +292,6 @@ p {
         top: 50%;
         color: #192939;
 
-        /*&:nth-child(0) {
-            margin: -58px 0 0 -56px;
-        }*/
         &:nth-child(1) {
             margin: -150px 0 0 -3px;
         }
@@ -348,8 +377,9 @@ p {
 }
 .subhexagon {
     position: absolute;
-    top: -310px;
+    top: -122px;
     left: 0;
+    margin: 0;
 
     > li {
         > a {
@@ -377,10 +407,10 @@ p {
     ****************************************    */
 #welcome {
     position: relative;
-    margin: 0 0 40px;
+    margin: 0 0 30px;
 
     h1, h2, h3 {
-        margin: 0 0 8px;
+        margin: 0 0 10px;
         text-transform: uppercase;
     }
 }
@@ -412,11 +442,9 @@ p {
 
         &.device-mobile {
 
-            &.page-default {
-                #root {
-                    background: url(../img/background-index.png) no-repeat center 0 #101326;
-                    background-size: 414px;
-                }
+            #page-default {
+                background: url(../img/background-index.png) no-repeat center 0 #101326;
+                background-size: 414px;
             }
             &.page- {}
             &.page- {}

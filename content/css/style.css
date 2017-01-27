@@ -34,6 +34,8 @@
 html, body {
   font-family: "Roboto", sans-serif;
   min-height: 100%;
+  height: 100%;
+  position: relative;
   background: #101326; }
 
 body {
@@ -89,10 +91,15 @@ p {
 #header {
   position: fixed;
   height: 60px;
+  width: 100%;
   z-index: 9;
+  top: 0;
+  left: 0;
   /* IF Scrolled */ }
   #header > .container {
-    height: 100%; }
+    height: 100%;
+    max-width: 420px;
+    position: relative; }
     #header > .container > .inner {
       height: 100%; }
   #header.scrolled {
@@ -103,7 +110,20 @@ p {
     Content
     ****************************************    */
 #content {
-  height: auto; }
+  height: auto;
+  min-height: 100%; }
+  #content #page {
+    min-height: 100%; }
+    #content #page:after {
+      display: block;
+      clear: both;
+      content: "";
+      width: 100%;
+      height: 0; }
+    #content #page > .item {
+      min-height: 100%; }
+      #content #page > .item > .container {
+        padding-top: 80px; }
 
 /*  ****************************************
     Title
@@ -156,17 +176,18 @@ p {
     Root
     ****************************************    */
 #root {
-  height: 100%;
-  min-height: 680px;
+  height: auto;
+  min-height: 100%;
   width: 100%;
   margin: 0 auto;
   padding: 0;
   position: relative;
   overflow: hidden;
-  transition: all 1s ease-in-out; }
+  transition: all 1s ease-in-out;
+  max-width: 420px; }
 
 /*  ****************************************
-    Hexagon
+    Hexagon & Subhexagon
     ****************************************    */
 .hexagon, .subhexagon {
   list-style: none;
@@ -174,7 +195,7 @@ p {
   height: 360px;
   position: relative;
   width: 100%;
-  margin: 188px 0 0 0; }
+  margin: 108px 0 0 0; }
   .hexagon:after, .subhexagon:after {
     display: table;
     width: 100%;
@@ -190,10 +211,7 @@ p {
     position: absolute;
     left: 50%;
     top: 50%;
-    color: #192939;
-    /*&:nth-child(0) {
-            margin: -58px 0 0 -56px;
-        }*/ }
+    color: #192939; }
     .hexagon > li:nth-child(1), .subhexagon > li:nth-child(1) {
       margin: -150px 0 0 -3px; }
     .hexagon > li:nth-child(2), .subhexagon > li:nth-child(2) {
@@ -254,8 +272,9 @@ p {
 
 .subhexagon {
   position: absolute;
-  top: -310px;
-  left: 0; }
+  top: -122px;
+  left: 0;
+  margin: 0; }
   .subhexagon > li > a {
     display: table; }
     .subhexagon > li > a > span {
@@ -276,9 +295,9 @@ p {
     ****************************************    */
 #welcome {
   position: relative;
-  margin: 0 0 40px; }
+  margin: 0 0 30px; }
   #welcome h1, #welcome h2, #welcome h3 {
-    margin: 0 0 8px;
+    margin: 0 0 10px;
     text-transform: uppercase; }
 
 /*  ****************************************
@@ -293,7 +312,7 @@ p {
     transform: rotate(-90deg); }
   html.orientation-portrait #root {
     transform: initial; }
-  html.device-mobile.page-default #root {
+  html.device-mobile #page-default {
     background: url(../img/background-index.png) no-repeat center 0 #101326;
     background-size: 414px; }
   .container {

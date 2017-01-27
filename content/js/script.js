@@ -1,4 +1,32 @@
-﻿/*  ****************************************
+﻿
+/*  ****************************************
+    Utility Functions
+    ****************************************    */
+var contains = function (needle) {
+    // Per spec, the way to identify NaN is that it is not equal to itself
+    var findNaN = needle !== needle;
+    var indexOf;
+    if (!findNaN && typeof Array.prototype.indexOf === 'function') {
+        indexOf = Array.prototype.indexOf;
+    } else {
+        indexOf = function (needle) {
+            var i = -1, index = -1;
+            for (i = 0; i < this.length; i++) {
+                var item = this[i];
+                if ((findNaN && item !== item) || item === needle) {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        };
+    }
+    return indexOf.call(this, needle) > -1;
+}
+
+
+
+/*  ****************************************
     App
     ****************************************    */
 
@@ -6,16 +34,71 @@ var app = app || {};
 
 app.method = app.method || {};
 
+// Page
 app.page = {
     default: "page-default",
-    protect: "page-protect",
-    find: "page-find",
+    vehicleProtect: "page-vehicle-protect",
+    vehicleRoute: "page-vehicle-route",
+    vehicleMap: "page-vehicle-map",
     offers: "page-offers",
     health: "page-health",
     crime: "page-crime",
     tracker: "page-tracker"
 }
 
+// Status
+// This object's responsibility is to store static stuff about our app
+// so we can go back to it while we are inrteracting with our app
+app.status = {
+    default: 'default',
+    breadcrumb: ['default', 'vehicleRoute', 'vehicleMap']
+}
+
+// Breadcrumb
+var breadcrumb = function () {
+    // This method is reponsible to load the default page of our app.status.default
+    var self = this;
+
+}
+breadcrumb.prototype.add = function (item) {
+    var self = this;
+    // As we drill down through the pages, we should add those pages to our app.status.breadcrumb
+    // so we can keep track of them
+    if (item) {
+        item = item.toString();
+
+        var exists = contains.call(app.status.breadcrumb, item);
+        // To make sure we don't add the same page over and over again
+        if (!exists) {
+            app.status.breadcrumb.push(item);
+        }
+    }
+    self.update();
+}
+
+breadcrumb.prototype.remove = function (item) {
+    var self = this;
+    // This should remove any page from the app.status.breadcrumb
+    // so the back button knows where to navigate to
+    if (item) {
+        item = item.toString();
+        if (item in app.page) {
+            var index = app.status.breadcrumb.indexOf(item);
+            if (index > -1) {
+                app.status.breadcrumb.splice(index, 1);
+            }
+        }
+    }
+    self.update();
+}
+
+breadcrumb.prototype.update = function () {
+    // This method is only responsible to refresh/update our UI
+    // for instance showing and hiding relevant pages according to app.status
+    console.log(app.status.breadcrumb);
+}
+
+// DOM
 app.DOM = {
     root: "root",
     header: "header",
@@ -178,9 +261,13 @@ app.hexagon = function () {
         item = hexagon.querySelectorAll('.item'),
         logo = hexagon.querySelector('.logo'),
         buttonBack = $('#' + app.DOM.button.back),
-        welcome = $('#' + app.DOM.welcome);
+        welcome = $('#' + app.DOM.welcome),
+        page = $('#page');
 
     // Animation
+    //$(logo).addClass('hidden').delay(500).queue(function (next) {
+    //    $(this).removeClass('hidden').addClass('animated bounceIn');
+    //});
     $(hexagon).addClass('animated zoomIn');
 
     // Hexagon Item
@@ -195,7 +282,7 @@ app.hexagon = function () {
 
                 // Hide Hexagon Items
                 $(element).siblings('li').addClass('hidden');
-                $(element).addClass('selected');
+                $(element).addClass('selected animated zoomIn');
 
                 // Show Subhexagon
                 subhexagon.removeClass('hidden');
@@ -213,7 +300,7 @@ app.hexagon = function () {
 
         // Hide Subhexagon
         selected.find('.subhexagon').addClass('hidden');
-        selected.removeClass('selected');
+        selected.removeClass('selected animated zoomIn');
 
         // Show Hexagon Items
         selected.siblings('li').removeClass('hidden');
@@ -223,6 +310,42 @@ app.hexagon = function () {
 
         // Hide Back Button
         $(this).addClass('hidden');
+    });
+
+    // Switch Between Pages
+    $(hexagon).find('a').each(function (i, e) {
+        var anchor = $(e),
+            data = anchor.filter('[data-page]'),
+            dataValue = data.data('page');
+
+        if (data.length) {
+            //console.log(dataValue, anchor.text());
+            data.on('click', function () {
+
+                var div = '#page-' + dataValue;
+
+                if (page.find(div).length) {
+
+                    div = page.find(div);
+
+                    div.removeClass('hidden').addClass('animated zoomIn');
+                    $('#page-default').addClass('hidden');
+                    
+
+                    // Add the existing page to breadcrumb object so we can keep track and go back to previou(s) pages
+                    // Hide the current page
+                    // Show the associated DIV to the one clicked
+                    // Show Back Button
+
+                } else {
+                    console.error('The ' + div + ' DIV was not found.');
+                }
+
+                //buttonBack.removeClass('hidden');
+                //$(this).addClass('active');
+                //console.log(dataValue, anchor.text());
+            });
+        }
     });
 
 }
@@ -252,11 +375,13 @@ app.nav = function () {
     }
 }
 
-
 /*  ****************************************
     Init
     ****************************************    */
 app.init = function () {
+
+    // Breadcrumb
+    app.breadcrumb = new breadcrumb();
 
     // Hexagon
     app.hexagon();
@@ -288,7 +413,7 @@ $(window).on('resize', function () {
     app.method.updateDimension();
     app.device();
 
-    console.log(app.device())
+    //console.log(app.device())
 
 });
 
@@ -316,7 +441,3 @@ $(function () {
     window.addEventListener('scroll', fun);
 
 });
-
-/*
-    \\\\\\\\\\\\\\\\\\\\////////////////////
-*/
