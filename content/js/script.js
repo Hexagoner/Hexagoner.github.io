@@ -51,7 +51,7 @@ app.page = {
 // so we can go back to it while we are inrteracting with our app
 app.status = {
     default: 'default',
-    breadcrumb: ['default', 'vehicleRoute', 'vehicleMap']
+    breadcrumb: ['default']
 }
 
 // Breadcrumb
@@ -333,6 +333,10 @@ app.hexagon = function () {
                     
 
                     // Add the existing page to breadcrumb object so we can keep track and go back to previou(s) pages
+
+                    app.breadcrumb.update();
+                    app.breadcrumb.add(dataValue);
+                    app.breadcrumb.update();
                     // Hide the current page
                     // Show the associated DIV to the one clicked
                     // Show Back Button

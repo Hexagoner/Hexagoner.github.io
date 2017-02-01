@@ -22,6 +22,10 @@
   color: #ffffff;
   outline: none; }
 
+@media (min-width: 768px) {
+  .container {
+    width: 100%; } }
+
 /*  ****************************************
     SASS Mixins
     ****************************************    */
@@ -231,9 +235,10 @@ p {
       position: relative;
       width: 80%;
       height: 80%;
-      display: block;
       margin: 10%;
-      text-decoration: none; }
+      text-decoration: none;
+      display: table;
+      /*display: block;*/ }
       .hexagon > li a > .icon, .subhexagon > li a > .icon {
         font-size: 36px;
         color: inherit;
@@ -245,26 +250,43 @@ p {
         left: 0;
         text-align: center; }
       .hexagon > li a > span, .subhexagon > li a > span {
+        /*line-height: 12px;
+	            font-size: 10px;
+	            width: 70%;
+	            text-align: center;
+	            position: absolute;
+	            bottom: 8px;
+	            left: 15%;
+	            text-transform: uppercase;
+	            color: inherit;
+	            font-weight: 800;
+	            vertical-align: middle;
+	            height: 24px;
+                word-break: break-word;*/
         line-height: 12px;
         font-size: 10px;
-        width: 70%;
         text-align: center;
-        position: absolute;
-        bottom: 8px;
-        left: 15%;
         text-transform: uppercase;
         color: inherit;
         font-weight: 800;
+        word-break: break-word;
+        width: 100%;
+        height: auto;
+        top: 24px;
+        display: table-cell;
         vertical-align: middle;
-        height: 24px;
-        word-break: break-word; }
+        bottom: auto;
+        position: relative;
+        left: auto;
+        padding: 0 10%; }
       .hexagon > li a > .indicator, .subhexagon > li a > .indicator {
         top: 84px;
         left: 16px;
         position: absolute; }
     .hexagon > li.selected, .subhexagon > li.selected {
       background-image: url(../img/hexagon-selected.png);
-      color: #00cccc; }
+      color: #b0b3b6;
+      /*color: #00cccc;*/ }
       .hexagon > li.selected > a > .indicator, .subhexagon > li.selected > a > .indicator {
         display: none; }
     .hexagon > li.logo, .subhexagon > li.logo {
@@ -276,19 +298,17 @@ p {
   left: 0;
   margin: 0; }
   .subhexagon > li > a {
-    display: table; }
+    /*display: table;*/ }
     .subhexagon > li > a > span {
-      line-height: 16px;
-      font-size: 12px;
-      width: 100%;
-      height: auto;
-      top: auto;
-      display: table-cell;
-      vertical-align: middle;
-      bottom: auto;
-      position: relative;
-      left: auto;
-      padding: 0 10%; }
+      /*width: 100%;
+	            height: auto;
+	            top: 22px;
+	            display: table-cell;
+	            vertical-align: middle;
+	            bottom: auto;
+	            position: relative;
+	            left: auto;
+	            padding: 0 10%;*/ }
 
 /*  ****************************************
     Welcome

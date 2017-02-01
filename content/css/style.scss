@@ -32,6 +32,12 @@
 
 }
 
+@media (min-width: 768px) {
+    .container {
+        width: 100%;
+    }
+}
+
 /*  ****************************************
     SASS Mixins
     ****************************************    */
@@ -319,10 +325,10 @@ p {
             position: relative;
             width: 80%;
             height: 80%;
-            display: block;
             margin: 10%;
             text-decoration: none;
-
+            display: table;
+            /*display: block;*/
 
             > .icon {
                 font-size: 36px;
@@ -337,7 +343,7 @@ p {
             }
 
             > span {
-                line-height: 12px;
+                /*line-height: 12px;
 	            font-size: 10px;
 	            width: 70%;
 	            text-align: center;
@@ -349,7 +355,24 @@ p {
 	            font-weight: 800;
 	            vertical-align: middle;
 	            height: 24px;
+                word-break: break-word;*/
+
+                line-height: 12px;
+                font-size: 10px;
+                text-align: center;
+                text-transform: uppercase;
+	            color: inherit;
+	            font-weight: 800;
                 word-break: break-word;
+                width: 100%;
+	            height: auto;
+	            top: 24px;
+	            display: table-cell;
+	            vertical-align: middle;
+	            bottom: auto;
+	            position: relative;
+	            left: auto;
+	            padding: 0 10%;
             }
 
             > .indicator {
@@ -361,7 +384,8 @@ p {
 
         &.selected {
             background-image: url(../img/hexagon-selected.png);
-            color: #00cccc;
+            color: #b0b3b6;
+            /*color: #00cccc;*/
 
             > a {
                 > .indicator {
@@ -383,20 +407,18 @@ p {
 
     > li {
         > a {
-            display: table;
+            /*display: table;*/
 
             > span {
-                line-height: 16px;
-	            font-size: 12px;
-                width: 100%;
+                /*width: 100%;
 	            height: auto;
-	            top: auto;
+	            top: 22px;
 	            display: table-cell;
 	            vertical-align: middle;
 	            bottom: auto;
 	            position: relative;
 	            left: auto;
-	            padding: 0 10%;
+	            padding: 0 10%;*/
             }
         }
     }
