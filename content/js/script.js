@@ -430,6 +430,7 @@ $(window).on('resize', function () {
 /*
     Add header background when page scrolls
 */
+/*
 $(function () {
 
     var fun = function () {
@@ -445,3 +446,4 @@ $(function () {
     window.addEventListener('scroll', fun);
 
 });
+*/
